@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الموقع الرسمي | لوحة المجتمع والإدارة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0f1117;
+      --bg-card: #181b24;
+      --bg-card-hover: #1f2330;
+      --primary: #5865F2;
+      --primary-hover: #4752C4;
+      --accent: #00d2ff;
+      --text-main: #ffffff;
+      --text-muted: #9ca3af;
+      --border: #2a2f3d;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    header {
+      background: rgba(24, 27, 36, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--text-main);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 4rem 5% 3rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(88, 101, 242, 0.15);
+      color: #8ea1e1;
+      border: 1px solid rgba(88, 101, 242, 0.3);
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.75rem 1.6rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: none;
+      transition: 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-card-hover);
+    }
+
+    /* Container & Sections */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 5%;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 5px;
+      height: 24px;
+      background: var(--primary);
+      border-radius: 4px;
+    }
+
+    /* Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    /* Interactive Ticket / Application Form */
+    .panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-main);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+    }
+
+    .tickets-list {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .ticket-item {
+      background: var(--bg-main);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .status {
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .status-open {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--success);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.7rem; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">بوابة المجتمع والإدارة</div>
+    <nav>
+      <a href="#features">المميزات</a>
+      <a href="#rules">القوانين</a>
+      <a href="#support">الدعم والتذاكر</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <span class="badge">النسخة الرسمية المباشرة</span>
+    <h1>مرحباً بك في الموقع الرسمي لمجتمعنا</h1>
+    <p>منصة متكاملة تجمع القوانين، الرتب الإدارية، ونظام التذاكر السريع للتواصل المباشر مع فريق الإدارة.</p>
+    <div class="btn-group">
+      <a href="#support" class="btn btn-primary">افتح تذكرة دعم</a>
+      <a href="#rules" class="btn btn-outline">تصفح القوانين</a>
+    </div>
+  </section>
+
+  <main class="container">
+    <h2 class="section-title" id="features">أقسام الموقع</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>الهيكل الإداري</h3>
+        <p>تنظيم واضح للرتب والصلاحيات يضمن سرعة الاستجابة وعدالة التعامل مع جميع الأعضاء.</p>
+      </div>
+      <div class="card">
+        <h3>نظام التذاكر السريع</h3>
+        <p>إمكانية إرسال الاستفسارات والشكاوى وطلبات الانضمام ومتابعتها بسهولة تامة.</p>
+      </div>
+      <div class="card">
+        <h3>الفعاليات والتحديثات</h3>
+        <p>متابعة مستمرة لأحدث البطولات، الجوائز، والأخبار الخاصة بالسيرفر والمجتمع.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title" id="rules">القوانين الأساسية</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>1. الاحترام المتبادل</h3>
+        <p>يُمنع منعاً باتاً الإساءة أو التلفظ بألفاظ غير لائقة تجاه أي عضو أو إداري.</p>
+      </div>
+      <div class="card">
+        <h3>2. الالتزام بتعليمات الإدارة</h3>
+        <p>قرارات طاقم الإدارة نافذة، وفي حال وجود اعتراض يُرجى فتح تذكرة رسمية للمراجعة.</p>
+      </div>
+      <div class="card">
+        <h3>3. منع النشر والتخريب</h3>
+        <p>يُمنع نشر الروابط الخارجية أو الإعلانات دون إذن مسبق من الإدارة العليا.</p>
+      </div>
+    </div>
+
+    <h2 class="section-title" id="support">نظام التذاكر والطلبات</h2>
+    <div class="panel">
+      <form id="ticketForm">
+        <div class="form-group">
+          <label>اسمك / معرفك في الديسكورد</label>
+          <input type="text" id="username" placeholder="مثال: Mr Jonz" required />
+        </div>
+        <div class="form-group">
+          <label>نوع الطلب</label>
+          <select id="category">
+            <option value="استفسار عام">استفسار عام</option>
+            <option value="تقديم على الإدارة">تقديم على الإدارة</option>
+            <option value="بلاغ أو شكوى">بلاغ أو شكوى</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>تفاصيل الرسالة</label>
+          <textarea id="message" rows="3" placeholder="اكتب تفاصيل طلبك هنا بوضوح..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">إرسال التذكرة</button>
+      </form>
+
+      <div class="tickets-list" id="ticketsList"></div>
+    </div>
+  </main>
+
+  <footer>
+    جميع الحقوق محفوظة &copy; 2026 - تم التصميم والنشر بنجاح
+  </footer>
+
+  <script>
+    const form = document.getElementById('ticketForm');
+    const ticketsList = document.getElementById('ticketsList');
+    let tickets = JSON.parse(localStorage.getItem('site_tickets') || '[]');
+
+    function renderTickets() {
+      ticketsList.innerHTML = '';
+      tickets.forEach((t) => {
+        const div = document.createElement('div');
+        div.className = 'ticket-item';
+        div.innerHTML = `
+          <div>
+            <strong>${t.username}</strong> — <span style="color:#8ea1e1">${t.category}</span>
+            <div style="color:#9ca3af; font-size:0.9rem; margin-top:4px;">${t.message}</div>
+          </div>
+          <span class="status status-open">تم الاستلام</span>
+        `;
+        ticketsList.appendChild(div);
+      });
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const category = document.getElementById('category').value;
+      const message = document.getElementById('message').value.trim();
+
+      if (!username || !message) return;
+
+      tickets.unshift({ username, category, message });
+      localStorage.setItem('site_tickets', JSON.stringify(tickets));
+      form.reset();
+      renderTickets();
+    });
+
+    renderTickets();
+  </script>
+</body>
+</html>
